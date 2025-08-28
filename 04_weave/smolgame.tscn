@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://43ec247e3xs7"]
+
+[ext_resource type="Texture2D" uid="uid://b8q2kh2s1h7ng" path="res://04_weave/smol.png" id="1_3pca5"]
+[ext_resource type="Script" uid="uid://dw7bx2c5rjm3c" path="res://04_weave/mousefriend.gd" id="2_8557v"]
+[ext_resource type="Script" uid="uid://brmhfd73la51x" path="res://04_weave/bullets.gd" id="3_0p5b3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pca5"]
+size = Vector2(45, 100)
+
+[node name="Smolgame" type="Node2D"]
+
+[node name="mousefriend" type="Node2D" parent="."]
+position = Vector2(349, 268)
+script = ExtResource("2_8557v")
+
+[node name="Smol" type="Sprite2D" parent="mousefriend"]
+position = Vector2(1, -22)
+texture = ExtResource("1_3pca5")
+
+[node name="hitbox" type="Area2D" parent="mousefriend"]
+position = Vector2(1, -12)
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mousefriend/hitbox"]
+position = Vector2(-1.5, 4)
+shape = SubResource("RectangleShape2D_3pca5")
+
+[node name="bullets" type="Node2D" parent="."]
+script = ExtResource("3_0p5b3")
+
+[connection signal="area_entered" from="mousefriend/hitbox" to="mousefriend" method="_on_hitbox_area_entered"]

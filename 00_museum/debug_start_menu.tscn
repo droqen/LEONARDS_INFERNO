@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://buxgbwckh1jd0"]
+[gd_scene load_steps=6 format=3 uid="uid://buxgbwckh1jd0"]
 
 [ext_resource type="Script" uid="uid://uql4180od2fy" path="res://00_museum/debug_start_menu.gd" id="1_ji5ot"]
 [ext_resource type="PackedScene" uid="uid://d8q340cut6w4" path="res://01_flashy_shit/flashy.tscn" id="2_jvy1f"]
 [ext_resource type="PackedScene" uid="uid://cr14llvll54x8" path="res://02_bangbang/bangbang.tscn" id="3_7l2av"]
+[ext_resource type="PackedScene" uid="uid://dyiqnjd2aq5df" path="res://03_ofc_platformer/ofc.tscn" id="4_c6dc7"]
+[ext_resource type="PackedScene" uid="uid://43ec247e3xs7" path="res://04_weave/smolgame.tscn" id="5_d77wi"]
 
 [node name="DebugStartMenu" type="Node2D"]
 script = ExtResource("1_ji5ot")
-scenes = Array[PackedScene]([ExtResource("2_jvy1f"), ExtResource("3_7l2av")])
+scenes = Array[PackedScene]([ExtResource("2_jvy1f"), ExtResource("3_7l2av"), ExtResource("4_c6dc7"), ExtResource("5_d77wi")])
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

@@ -7,6 +7,8 @@
 script = ExtResource("1_yd7jx")
 
 [node name="Shape" type="Node2D" parent="."]
+position = Vector2(39.5844, 23.0831)
+rotation = -1.02119
 script = ExtResource("2_ehc7a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
