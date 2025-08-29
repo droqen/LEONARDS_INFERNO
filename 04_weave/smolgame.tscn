@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://43ec247e3xs7"]
+[gd_scene load_steps=7 format=3 uid="uid://43ec247e3xs7"]
 
 [ext_resource type="Texture2D" uid="uid://b8q2kh2s1h7ng" path="res://04_weave/smol.png" id="1_3pca5"]
 [ext_resource type="Script" uid="uid://dw7bx2c5rjm3c" path="res://04_weave/mousefriend.gd" id="2_8557v"]
 [ext_resource type="Script" uid="uid://brmhfd73la51x" path="res://04_weave/bullets.gd" id="3_0p5b3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pca5"]
-size = Vector2(45, 100)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8557v"]
+
+[sub_resource type="Gradient" id="Gradient_8557v"]
+offsets = PackedFloat32Array(0.012987, 0.850649, 0.922078)
+colors = PackedColorArray(1, 0.309804, 0.6, 1, 0.938636, 0.892663, 0.971521, 1, 1, 0.654902, 0.6, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t3fp5"]
+gradient = SubResource("Gradient_8557v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Smolgame" type="Node2D"]
 
@@ -14,17 +23,20 @@ position = Vector2(349, 268)
 script = ExtResource("2_8557v")
 
 [node name="Smol" type="Sprite2D" parent="mousefriend"]
-position = Vector2(1, -22)
+position = Vector2(0, -12)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_3pca5")
 
 [node name="hitbox" type="Area2D" parent="mousefriend"]
-position = Vector2(1, -12)
 collision_layer = 4
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mousefriend/hitbox"]
-position = Vector2(-1.5, 4)
-shape = SubResource("RectangleShape2D_3pca5")
+shape = SubResource("CircleShape2D_8557v")
+
+[node name="focus" type="Sprite2D" parent="mousefriend"]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_t3fp5")
 
 [node name="bullets" type="Node2D" parent="."]
 script = ExtResource("3_0p5b3")
