@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpe6pgwe6trme"]
+[gd_scene load_steps=5 format=3 uid="uid://bpe6pgwe6trme"]
 
 [ext_resource type="Script" uid="uid://cmtrflo78ygbq" path="res://05_dreamer_splash/02a_gameplay/gameplay_scene.gd" id="1_pmhbl"]
+[ext_resource type="Script" uid="uid://dnv1bfb1l45j2" path="res://05_dreamer_splash/02a_gameplay/player.gd" id="2_2uxmm"]
+
+[sub_resource type="Gradient" id="Gradient_mm0ru"]
+offsets = PackedFloat32Array(0.266234, 0.792208, 0.961039, 0.987013)
+colors = PackedColorArray(0, 0, 0, 1, 0.576471, 0.576471, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mtouh"]
+gradient = SubResource("Gradient_mm0ru")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="GameplayScene" type="Node2D"]
 script = ExtResource("1_pmhbl")
@@ -9,3 +20,9 @@ script = ExtResource("1_pmhbl")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "This is Gameplay"
+
+[node name="player" type="Node2D" parent="."]
+script = ExtResource("2_2uxmm")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+texture = SubResource("GradientTexture2D_mtouh")
