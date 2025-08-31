@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Leonard's Inferno"
-run/main_scene="uid://buxgbwckh1jd0"
+run/main_scene="uid://b01vg6jlsqlps"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Pin="*res://utils/pin.gd"
+Dreamer="*res://navdi/navdidreamer.gd"
 
 [input]
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvrqelcynt354"]
+
+[ext_resource type="Script" uid="uid://cvxsrsswf2uje" path="res://05_dreamer_splash/00_mainmenu/dreamlist.gd" id="1_yk7pp"]
+
+[node name="DreamMainmenuScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="dreamlist" type="Node2D" parent="."]
+script = ExtResource("1_yk7pp")
+
+[node name="Label" type="Label" parent="dreamlist"]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+text = "test
+test2"
+horizontal_alignment = 1
+vertical_alignment = 1

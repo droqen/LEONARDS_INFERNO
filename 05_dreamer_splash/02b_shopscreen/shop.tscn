@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://gyi2cwtyc8p6"]
+
+[ext_resource type="Script" uid="uid://v8cpex1nrwj0" path="res://05_dreamer_splash/02b_shopscreen/shop.gd" id="1_omhj0"]
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_omhj0")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "This is Shop."

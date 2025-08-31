@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b01vg6jlsqlps"]
+
+[ext_resource type="Script" uid="uid://d2hd2f43bud1p" path="res://05_dreamer_splash/initdreamer.gd" id="1_4k5sb"]
+[ext_resource type="Resource" uid="uid://bn250s23r6lns" path="res://05_dreamer_splash/00_mainmenu/dream_mainmenu.tres" id="2_6tmi3"]
+
+[node name="FirstDream" type="Node2D"]
+script = ExtResource("1_4k5sb")
+first_dream = ExtResource("2_6tmi3")
