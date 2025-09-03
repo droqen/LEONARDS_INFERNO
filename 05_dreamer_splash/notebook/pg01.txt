@@ -1,0 +1,26 @@
+
+Sep 2
+Russel and Shelley are on the flight sim behind me,
+talking about flying through clouds, flying VFR, etc.
+And what am I doing?
+
+Exploiting a hypothetical player.
+My goal is to produce something hideous; a monstrosity.
+The system must have a thousand thousand possibilities.
+
+When you go shopping, what do you buy?
+- Explore a combinatoric possibility
+- Exploit one you're already familiar with
+- Just survive
+
+PROTOTYPING A NEW WEAPON SCHEME?
+A SYSTEM FOR ALLOWING PROTOTYPING:
+	- spawn enemies
+	- new scoring systems
+	- affecting/damaging enemies
+	- what do i get from enemies?
+	- pickups?
+
+11:21 PM
+-> Generalize all objects into the same type. This type needs to include
+   boid-like behaviour and it needs to do it efficiently. Ugh, engineering.

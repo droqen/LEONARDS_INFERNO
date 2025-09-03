@@ -14,6 +14,11 @@ var currency : int :
 func _ready() -> void:
 	_currency = Dreamer.r('currency')
 	var difficulty : int = Dreamer.r('gameplay difficulty')
+	$playerbank.spawn("player")
+	for i in range(10):
+		$birdbank.spawn("greencellbird")
+		$birdbank.spawn("redcellbird")
+		$birdbank.spawn("bluecellbird")
 
 func _physics_process(_delta: float) -> void:
 	$Label.text = "This is Gameplay, difficulty %d\nYou have $%d.\nPress ENTER to finish" % [difficulty, currency]
@@ -21,3 +26,6 @@ func _physics_process(_delta: float) -> void:
 	if dphy: currency -= dphy
 	if Pin.get_a_hit():
 		Dreamer.wake()
+
+func gameover() -> void:
+	Dreamer.wake()

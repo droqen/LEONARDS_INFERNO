@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpe6pgwe6trme"]
+[gd_scene load_steps=14 format=3 uid="uid://bpe6pgwe6trme"]
 
 [ext_resource type="Script" uid="uid://cmtrflo78ygbq" path="res://05_dreamer_splash/02a_gameplay/gameplay_scene.gd" id="1_pmhbl"]
 [ext_resource type="Script" uid="uid://dnv1bfb1l45j2" path="res://05_dreamer_splash/02a_gameplay/player.gd" id="2_2uxmm"]
+[ext_resource type="Texture2D" uid="uid://b8q2kh2s1h7ng" path="res://04_weave/smol.png" id="3_mtouh"]
+[ext_resource type="Script" uid="uid://bk8omw371wgdt" path="res://navdi/bank.gd" id="5_hego5"]
+[ext_resource type="Script" uid="uid://i0a3shdr677n" path="res://05_dreamer_splash/02a_gameplay/cellbird.gd" id="5_p2fit"]
 
 [sub_resource type="Gradient" id="Gradient_mm0ru"]
 offsets = PackedFloat32Array(0.266234, 0.792208, 0.961039, 0.987013)
@@ -13,16 +16,151 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2uxmm"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm0ru"]
+radius = 100.0
+
+[sub_resource type="Gradient" id="Gradient_mtouh"]
+offsets = PackedFloat32Array(0.207792, 0.74026, 1)
+colors = PackedColorArray(0.737193, 0.737193, 0.737193, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hego5"]
+gradient = SubResource("Gradient_mtouh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hego5"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2fit"]
+radius = 200.0
+
 [node name="GameplayScene" type="Node2D"]
 script = ExtResource("1_pmhbl")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
+offset_right = 130.0
 offset_bottom = 23.0
 text = "This is Gameplay"
 
-[node name="player" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="playerbank" type="Node" parent="."]
+script = ExtResource("5_hego5")
+metadata/_custom_type_script = "uid://bk8omw371wgdt"
+
+[node name="player" type="Node2D" parent="playerbank"]
 script = ExtResource("2_2uxmm")
 
-[node name="Sprite2D" type="Sprite2D" parent="player"]
+[node name="body" type="Sprite2D" parent="playerbank/player"]
+position = Vector2(2, -22)
+texture = ExtResource("3_mtouh")
+
+[node name="hpLabel" type="Label" parent="playerbank/player/body"]
+modulate = Color(1, 0, 1, 1)
+offset_left = -44.0
+offset_top = -33.0
+offset_right = 34.0
+offset_bottom = -10.0
+text = "10"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="playerbank/player"]
 texture = SubResource("GradientTexture2D_mtouh")
+
+[node name="Hit" type="Area2D" parent="playerbank/player"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerbank/player/Hit"]
+shape = SubResource("CircleShape2D_2uxmm")
+
+[node name="Detect" type="Area2D" parent="playerbank/player"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerbank/player/Detect"]
+shape = SubResource("CircleShape2D_mm0ru")
+
+[node name="birdbank" type="Node" parent="."]
+script = ExtResource("5_hego5")
+metadata/_custom_type_script = "uid://bk8omw371wgdt"
+
+[node name="greencellbird" type="Node2D" parent="birdbank"]
+modulate = Color(0.358767, 0.759936, 0.328325, 1)
+position = Vector2(261, -128)
+script = ExtResource("5_p2fit")
+green = true
+
+[node name="Sprite2D" type="Sprite2D" parent="birdbank/greencellbird"]
+texture = SubResource("GradientTexture2D_hego5")
+
+[node name="Hit" type="Area2D" parent="birdbank/greencellbird"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="birdbank/greencellbird/Hit"]
+shape = SubResource("CircleShape2D_hego5")
+
+[node name="Detect" type="Area2D" parent="birdbank/greencellbird"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="birdbank/greencellbird/Detect"]
+shape = SubResource("CircleShape2D_p2fit")
+
+[node name="redcellbird" type="Node2D" parent="birdbank"]
+modulate = Color(0.870588, 0.262745, 0.478431, 1)
+position = Vector2(579, -141)
+script = ExtResource("5_p2fit")
+red = true
+
+[node name="Sprite2D" type="Sprite2D" parent="birdbank/redcellbird"]
+texture = SubResource("GradientTexture2D_hego5")
+
+[node name="Hit" type="Area2D" parent="birdbank/redcellbird"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="birdbank/redcellbird/Hit"]
+shape = SubResource("CircleShape2D_hego5")
+
+[node name="Detect" type="Area2D" parent="birdbank/redcellbird"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="birdbank/redcellbird/Detect"]
+shape = SubResource("CircleShape2D_p2fit")
+
+[node name="bluecellbird" type="Node2D" parent="birdbank"]
+modulate = Color(0.305882, 0.564706, 0.854902, 1)
+position = Vector2(472, 125)
+script = ExtResource("5_p2fit")
+blue = true
+
+[node name="Sprite2D" type="Sprite2D" parent="birdbank/bluecellbird"]
+texture = SubResource("GradientTexture2D_hego5")
+
+[node name="Hit" type="Area2D" parent="birdbank/bluecellbird"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="birdbank/bluecellbird/Hit"]
+shape = SubResource("CircleShape2D_hego5")
+
+[node name="Detect" type="Area2D" parent="birdbank/bluecellbird"]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="birdbank/bluecellbird/Detect"]
+shape = SubResource("CircleShape2D_p2fit")

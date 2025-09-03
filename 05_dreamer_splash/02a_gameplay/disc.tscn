@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://qkhiri6f21wk"]
+
+[ext_resource type="Script" uid="uid://bufrwt2u71mch" path="res://05_dreamer_splash/02a_gameplay/disc.gd" id="1_pbq7c"]
+
+[sub_resource type="Gradient" id="Gradient_wo7hs"]
+offsets = PackedFloat32Array(0.0974026, 0.340909, 0.512987, 0.633117, 0.983766)
+colors = PackedColorArray(0.698039, 0, 0, 1, 0.898039, 0.156863, 0.376471, 1, 1, 0.478431, 1, 1, 1, 0.478431, 1, 0.488, 1, 0.478431, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pbq7c"]
+gradient = SubResource("Gradient_wo7hs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbq7c"]
+radius = 16.0
+
+[sub_resource type="Gradient" id="Gradient_pbq7c"]
+colors = PackedColorArray(0.577234, 0.0591121, 0.270146, 1, 0.121569, 0.368627, 0.435294, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pws5g"]
+gradient = SubResource("Gradient_pbq7c")
+
+[sub_resource type="Gradient" id="Gradient_gci7o"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.121569, 0.796078, 0.435294, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0osyn"]
+gradient = SubResource("Gradient_gci7o")
+
+[node name="disc" type="Node2D"]
+script = ExtResource("1_pbq7c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_pbq7c")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pbq7c")
+
+[node name="hpback" type="Sprite2D" parent="."]
+position = Vector2(-5.96046e-08, -22)
+scale = Vector2(0.5, 0.0625)
+texture = SubResource("GradientTexture2D_pws5g")
+
+[node name="hpscaler" type="Node2D" parent="."]
+position = Vector2(-16, -22)
+
+[node name="hpbar" type="Sprite2D" parent="hpscaler"]
+position = Vector2(16, 0)
+scale = Vector2(0.5, 0.078125)
+texture = SubResource("GradientTexture2D_0osyn")
