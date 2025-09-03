@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1bcnmj4fco0f"]
+
+[ext_resource type="Script" uid="uid://bpmbamgqhqkoy" path="res://06_diver/divermeta/divers_dream.gd" id="1_kat6c"]
+
+[node name="Divers-dream" type="Node"]
+script = ExtResource("1_kat6c")

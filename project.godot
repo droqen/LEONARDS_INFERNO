@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Leonard's Inferno"
-run/main_scene="uid://b01vg6jlsqlps"
+run/main_scene="uid://c1bcnmj4fco0f"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

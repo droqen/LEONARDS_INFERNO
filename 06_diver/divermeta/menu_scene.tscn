@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7jesgndabsew"]
+
+[ext_resource type="Script" uid="uid://cqka7h6kxrtq" path="res://06_diver/divermeta/menu_scene.gd" id="1_aprqi"]
+
+[sub_resource type="Gradient" id="Gradient_108tc"]
+offsets = PackedFloat32Array(0.00649351, 1)
+colors = PackedColorArray(0, 0.105882, 0.137255, 1, 0, 0.411765, 0.921569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aprqi"]
+gradient = SubResource("Gradient_108tc")
+fill_from = Vector2(1, 1)
+
+[node name="MenuScene" type="Node2D"]
+script = ExtResource("1_aprqi")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(1.52588e-05, -1.49998)
+scale = Vector2(12.9688, 13.0156)
+texture = SubResource("GradientTexture2D_aprqi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="Label" type="Label" parent="."]
+offset_top = -158.0
+offset_right = 223.0
+offset_bottom = 158.0
+text = "[ ] menu item
+[ ] other thing"
+vertical_alignment = 1
