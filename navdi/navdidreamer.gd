@@ -50,7 +50,6 @@ func _goto_current_dream_packed():
 			var err = get_tree().change_scene_to_packed(ps)
 			if err != OK:
 				push_error("failed to change scene to packed %s of dream %s : reason %s" % [ps, d , err])
-
 func dream(d:NavdiDream) -> void:
 	if d in dream_stack:
 		push_error("already inside dream %s" % d)

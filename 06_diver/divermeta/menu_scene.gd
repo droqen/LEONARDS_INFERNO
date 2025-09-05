@@ -1,7 +1,7 @@
 extends Node2D
 
 var MENUITEMS = [
-	["New Game", func(): Dreamer.dream(null)],
+	["New Game", func(): Dreamer.dream(load("res://06_diver/01-four/dream-01four.tres"))],
 	["Quit", func(): get_tree().quit(0)],
 ]
 
