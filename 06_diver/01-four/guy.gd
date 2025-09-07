@@ -13,8 +13,8 @@ var air_maneuverability : float = 0.0;
 var jet_phase : float = 0.0
 func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
-	var jumphit : bool = Pin.get_a_hit()
-	var jumpheld : bool = Pin.get_a()
+	var jumphit : bool = Pin.get_a_hit() or Pin.get_dpad_hit().y < 0
+	var jumpheld : bool = Pin.get_a() or dpad.y < 0
 	var onfloor : bool = vy >= 0 and mover.cast_fraction(self,caster,VERTICAL,1)<1
 	if onfloor: bufs.on(FLORBUF); just_jumped = false;
 	if vx : spr.flip_h = vx < 0
@@ -25,19 +25,18 @@ func _physics_process(_delta: float) -> void:
 		just_jumped = true
 		air_maneuverability *= 2
 	
-	if Pin.get_a() and (not just_jumped or vy > 0):
+	if jumpheld and (not just_jumped or vy > 0):
 		just_jumped = false
 		jet_phase += 0.15
 		vy = move_toward(vy, -0.5 -0.2 * sin(jet_phase), 0.03)
 		if vy < 0:
 			air_maneuverability = move_toward(air_maneuverability, 1.0, 0.03)
-	elif vy < 0:
-		jet_phase = 0.0
-		vy = move_toward(vy,  0.0, 0.04 if jumpheld else 0.1)
-		air_maneuverability = move_toward(air_maneuverability, 0.0, 0.01)
 	else:
 		jet_phase = 0.0
-		vy = move_toward(vy,  2.0, 0.05)
+		if vy < 0:
+			vy = move_toward(vy,  0.0, 0.04 if jumpheld else 0.1)
+		else:
+			vy = move_toward(vy,  2.0, 0.05)
 		air_maneuverability = move_toward(air_maneuverability, 0.0, 0.01)
 	
 	vx = move_toward(vx,

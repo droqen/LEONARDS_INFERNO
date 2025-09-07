@@ -32,13 +32,12 @@ script = ExtResource("3_duxu4")
 texture = ExtResource("3_pad6e")
 hframes = 10
 vframes = 10
-frame = 4
+frame = 3
 script = ExtResource("3_pcflx")
 sheet = ExtResource("4_pad6e")
 playing = true
 frames = PackedInt32Array(3, 4)
 ani_period = 39
-ani_index = 1
 metadata/_custom_type_script = "uid://di2t14yakk4ot"
 
 [node name="mover" type="Node2D" parent="guy"]
